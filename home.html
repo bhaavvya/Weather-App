@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background-image: url("https://media.giphy.com/media/waiLGuTDNetW/source.gif");
+            /* background-repeat: no-repeat; */
+            
+        }
+        .box{
+            background-color: rgb(70, 210, 210);
+            position: relative;
+            margin:10%;
+            border-radius: 10px 10px 10px 10px;
+            border-style: groove;
+            box-shadow: inset;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* background-image: url("https://i.gifer.com/origin/03/03270abe66b1c66ef8832c57aa6da0c1_w200.gif"); */
+        }
+        #symbol{
+            font-size: 100px;
+        }
+        .location{
+            font-size: 65px;
+        }
+        .temp{
+            font-size: 65px;
+        }
+        .date{
+            font-size: 35px;
+        }
+        .tempmin_max{
+            font-size: 35px;
+        }
+        /*  */
+.fa-street-view{
+    animation: rotates 3s linear infinite alternate;
+}
+@keyframes rotates{
+    from{
+        transform: translateX(-0.5rem);
+    }to{
+        transform: translateX(0.5rem);
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="box">
+
+        <div id="weathercon">
+            <i class="fa-solid fa-sun fa-beat-fade" id="symbol" style="color: #dcf236;"></i>
+            <i class="fa-solid fa-cloud fa-beat-fade" id="symbol" ></i>
+        </div>
+        <div class="info">
+            <h2 class="location"><i class="fas fa-street-view" id="location"></i>{%location%},{%country%}</h2>
+            <span id="date"></span>
+            <div class="waveWrapper waveAnimation">
+            <!-- <div class="waveWrapperInner bottom">
+                <div class="wave waveBottom" style="background-image: url(wave-bot.png); "></div>
+              </div>
+            </div> -->
+            <h1 class="temp">{%tempval%}<sup>o</sup>C</h1>
+            <span class="tempmin_max">{%tempmin%} | {%tempmax%}</span>
+        </div>
+    </div>
+
+
+
+    <script>
+        const curdate=document.getElementById('date');
+        const weathercon=document.getElementById('weathercon');
+        // const location=document.getElementsByClassName('location');
+        const temp=document.getElementsByClassName('temp');
+        const tempmin_max=document.getElementsByClassName('tempmin_max');
+        let startdate;
+        const tempstatus="{%tempstat%}";
+        const finddate=()=>{
+            let date=new Date();
+        var month = date.getUTCMonth() + 1; //months from 1-12
+        var day = date.getUTCDate();
+        var year = date.getUTCFullYear();
+        var hrs=date.getHours();
+        var min=date.getMinutes();
+        var sec=date.getSeconds();
+
+
+        startdate ="Date- "+ year + "/" + month + "/" + day+"   "+ "Time- "+hrs+":"+min+":"+sec;
+        
+        console.log(startdate);
+        return startdate;
+        }
+        curdate.innerHTML=finddate();
+
+        const celcustemp=()=>{
+            let tempapi=fetch()
+        }
+        // let date=new Date();
+        // var month = date.getUTCMonth() + 1; //months from 1-12
+        // var day = date.getUTCDate();
+        // var year = date.getUTCFullYear();
+
+        // startdate = year + "/" + month + "/" + day;
+        // curdate.innerText=startdate;
+        // console.log(startdate);
+        
+    </script>
+</body>
+</html>
